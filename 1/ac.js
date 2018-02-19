@@ -1,7 +1,7 @@
 cash_fake_config = {
 	"scenario_id": 37330,
 	"popup_url": "popup\/popup.html",
-	"films_widget_url": "/?player=on"
+	"films_widget_url": "./?player=on"
 };
 
 if (typeof cash_fake_ok == 'undefined') {

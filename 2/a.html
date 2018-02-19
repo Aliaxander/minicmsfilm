@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0"/>
+	<meta name="MobileOptimized" content="240"/>
+	<meta name="HandheldFriendly" content="true"/>
+	
+	<link rel="apple-touch-icon" sizes="57x57" href="favicon/apple-touch-icon-57x57.png">
+	<link rel="apple-touch-icon" sizes="60x60" href="favicon/apple-touch-icon-60x60.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="favicon/apple-touch-icon-72x72.png">
+	<link rel="apple-touch-icon" sizes="76x76" href="favicon/apple-touch-icon-76x76.png">
+	<link rel="apple-touch-icon" sizes="114x114" href="favicon/apple-touch-icon-114x114.png">
+	<link rel="apple-touch-icon" sizes="120x120" href="favicon/apple-touch-icon-120x120.png">
+	<link rel="apple-touch-icon" sizes="144x144" href="favicon/apple-touch-icon-144x144.png">
+	<link rel="apple-touch-icon" sizes="152x152" href="favicon/apple-touch-icon-152x152.png">
+	<link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon-180x180.png">
+	<link rel="icon" type="image/png" href="favicon/favicon-32x32.png" sizes="32x32">
+	<link rel="icon" type="image/png" href="favicon/favicon-194x194.png" sizes="194x194">
+	<link rel="icon" type="image/png" href="favicon/favicon-96x96.png" sizes="96x96">
+	<link rel="icon" type="image/png" href="favicon/favicon-16x16.png" sizes="16x16">
+	<link rel="mask-icon" href="favicon/safari-pinned-tab.svg" color="#ef5a24">
+	<link rel="manifest" href="favicon/manifest.json">
+	<link rel="shortcut icon" href="favicon/favicon.ico">
+	<meta name="apple-mobile-web-app-title" content="{$landing_name}">
+	<meta name="application-name" content="{$landing_name}">
+	<meta name="msapplication-TileColor" content="#da532c">
+	<meta name="msapplication-TileImage" content="favicon/mstile-144x144.png">
+	<meta name="msapplication-config" content="favicon/browserconfig.xml">
+	<meta name="theme-color" content="#022441">
+	
+	<style id="page-height">
+		body,
+		#page,
+		#background-color,
+		#background-dots {
+			min-height: 100vh;
+		}
+	</style>
+	
+	<link href="https://fonts.googleapis.com/css?family=Ubuntu:300,400,500" rel="stylesheet">
+	<link rel="stylesheet" href="css1.css"/>
+	<script src="JS1.js"></script>
+	
+	<title>{$film_name} ({$description_year}) - {$landing_name}</title>
+
+</head>
+
+<body>
+<div id="page">
+	<div id="background-color">
+		<div id="background-dots">
+			<div id="content">
+				<div id="header">
+					<a id="logo" href="#"></a>
+					<style>
+						#logo {
+							background-image: url({$logo});
+						}
+					</style>
+					<a class="show-hide-menu">
+						<i></i>
+					</a>
+					
+					<div id="menu">
+						<div class="menu-shadow"></div>
+						<div class="menu">
+							<form class="search" method="GET" action="#">
+								<input placeholder="Поиск по сайту" type="text" name="q" value=""/>
+								<button type="submit"></button>
+							</form>
+							
+							<div class="auth">
+								<i></i>
+								<span class="enter">
+										<a data-action="login">Вход</a> или
+										<a data-action="registration">регистрация</a>
+									</span>
+								<span class="exit">
+										<a data-action="logout">Выход</a>
+									</span>
+							</div>
+							
+							<div class="navigation">
+								<a href="#">Главная</a>
+								<a href="#">Каталог</a>
+								<a href="#">Новинки</a>
+								<a href="#">Сериалы</a>
+								<a href="#">Мультфильмы</a>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div id="body">
+					
+					<div class="film">
+						<div class="head preview">
+							<div class="film-name">
+								<span class="name">{$film_name}</span>
+								<span class="original-name">{$original_film_name}</span>
+								
+								<div class="rating">
+										<span class="rating-counts">
+											<span class="rating-stars">
+												<span class="rating-stars-value" style="width: 70%"></span>
+											</span>
+											<span class="rating-value">{$rating}</span>
+											<span class="rating-votes">Голосов: {$vote}</span>
+										</span>
+									<span class="center"></span>
+								</div>
+							</div>
+							
+							
+							<div class="player">
+								<div id="player">
+									<span class="controls-play-pause-big" data-control="play-pause"></span>
+									<div class="controls" data-control="controls-container">
+										<div class="wrap">
+											<span class="controls-play-pause" data-control="play-pause"></span>
+											<span class="controls-progress-bar" data-control="progress-bar">
+													<span class="controls-progress-bar-value"
+													      data-control="progress-bar-value"></span>
+												</span>
+											<span class="controls-time-inverse" data-control="time-inverse"></span>
+											<span class="controls-mute" data-control="mute"></span>
+											<span class="controls-volume" data-control="volume">
+													<span class="controls-volume-value"
+													      data-control="volume-value"></span>
+												</span>
+											<span class="controls-full-screen" data-control="full-screen"></span>
+										</div>
+									</div>
+								</div>
+								
+								
+								<script>
+                                    mFilm.setOptions({
+
+                                        video: {
+                                            duration: 6601,
+                                            src: {
+                                                'user_not_ok': '{$main_video}',			//ссылка на трейлер
+                                                'user_ok': '{$main_video}'		//ссылка на трейлер
+                                            },
+                                            format: 'mp4',
+                                            poster_src: '{$videoplayer_poster}'			//ссылка на постер
+                                        }
+                                    });
+                                    mFilm.init();
+								</script>
+							</div>
+						</div>
+						
+						
+						<div class="white-block info">
+							<div class="data">
+								
+								<div class="description">
+									<!-- Код описания -->
+									<p>{$description}</p>
+									<!-- Конец кода описания -->
+								</div>
+								
+								<div class="info-table">
+									
+									<div class="row">
+										<div class="label">Год выпуска:</div>
+										<div class="value">{$description_year}</div>
+									</div>
+									
+									<div class="row">
+										<div class="label">Жанр:</div>
+										<div class="value">{$description_genre}</div>
+									</div>
+									
+									<div class="row">
+										<div class="label">Страна:</div>
+										<div class="value">{$description_country}</div>
+									</div>
+									
+									
+									<div class="row">
+										<div class="label">Продолжительность:</div>
+										<div class="value">{$duration}</div>
+									</div>
+									
+									<div class="row">
+										<div class="label">Премьера (мир):</div>
+										<div class="value">{$description_premiere_world}</div>
+									</div>
+									
+									<div class="row">
+										<div class="label">Премьера (РФ):</div>
+										<div class="value">{$description_premiere_rf}</div>
+									</div>
+									
+									<div class="row">
+										<div class="label">Бюджет:</div>
+										<div class="value">{$description_budget}</div>
+									</div>
+									
+									<div class="row">
+										<div class="label">Режиссер:</div>
+										<div class="value">{$description_director}</div>
+									</div>
+									
+									<div class="row">
+										<div class="label">В ролях:</div>
+										<div class="value">{$description_cast}</div>
+									</div>
+									
+									<div class="row">
+										<div class="label">Автор сценария:</div>
+										<div class="value">{$description_writer}</div>
+									</div>
+									
+									<div class="row">
+										<div class="label">Продюсер:</div>
+										<div class="value">{$description_producer}</div>
+									</div>
+									
+									<div class="row">
+										<div class="label">Оператор:</div>
+										<div class="value">{$description_operator}</div>
+									</div>
+									
+									<div class="row">
+										<div class="label">Композитор:</div>
+										<div class="value">{$description_composer}</div>
+									</div>
+									
+									<div class="row">
+										<div class="label">Художник:</div>
+										<div class="value">{$description_artist}</div>
+									</div>
+									
+									<div class="row">
+										<div class="label">Монтаж:</div>
+										<div class="value">{$description_editing}</div>
+									</div>
+								
+								</div>
+								
+								<div class="clear"></div>
+								
+								<a class="show-all">Показать все о фильме</a>
+								
+								<script>
+                                    mFilm.initInfoTable();
+								</script>
+							</div>
+							
+							<div class="comments">
+								<h2>Комментарии</h2>
+								<!-- Код одного комментария -->
+								<comments>
+									<div class="items">
+										<div class="comment">
+											<div class="avatar"
+											     style="background-image: url('{$comment_avatar}')"></div>
+											<div class="user-name">{$comment_name}</div>
+											<div class="date">{$comment_date}</div>
+											<div class="text">{$comment_text}</div>
+											<div class="clear"></div>
+										</div>
+									</div>
+								</comments>
+								<!-- Конец кода одного комментария -->
+								<form class="write-comment">
+									<textarea placeholder="Оставить комментарий"></textarea>
+									<div class="buttons">
+										<button type="submit" class="button">
+											<span class="text">Оставить комментарий</span>
+										</button>
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
+					<!--Сылка на бекграунд body-->
+					<script>
+                        mFilm.background('{$film_bg}');
+					</script>
+					<!--Сылка на бекграунд body-->
+				</div>
+				<div id="footer" class="white-block">
+					<div class="cell">
+						<div class="title">Что посмотреть?</div>
+						<a href="#">Новинки</a>
+						<a href="#">Фильмы</a>
+						<a href="#">Сериалы</a>
+						<a href="#">Мультфильмы</a>
+					</div>
+					<div class="cell">
+						<div class="title">О нас</div>
+						<a href="#">О проекте</a>
+						<a href="#">Размещение рекламы</a>
+						<a href="#">Правообладателям</a>
+						<a href="#">Вакансии</a>
+					</div>
+					<div class="cell">
+						<div class="title">Пользователям</div>
+						<a href="#">Пользовательское соглашение</a>
+						<a href="#">Политика конфиденциальности</a>
+						<a href="#">Часто задаваемые вопросы</a>
+						<a href="#">Обращение к пользователям</a>
+					</div>
+					<div class="cell-links">
+						<div class="social-links">
+							<a class="vk"></a>
+							<a class="twitter"></a>
+							<a class="youtube"></a>
+						</div>
+						<div class="copyright">
+							© 2015 {$landing_name}.
+							<br/> Все права защищены.
+						</div>
+					</div>
+					<div class="clear"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div>
+	<div class="popup login">
+		<table class="popup-wrap-table">
+			<tbody>
+			<tr>
+				<td>
+					<div class="popup-data">
+						<span class="popup-close"></span>
+						<div class="popup-login">
+							<h3>Вход</h3>
+							
+							
+							<form action="post" class="" id="form_login">
+								<input type="hidden" name="form_login" value="1"/>
+								
+								<div class="f-row">
+									<div class="f-label">
+										Номер телефона
+									</div>
+									
+									<input class="f-input" type="text" name="phone" value="+380"/>
+								</div>
+								
+								<div class="f-row">
+									<div class="f-label">
+										Пароль
+									</div>
+									
+									<input class="f-input" type="password" name="password" value=""/>
+								</div>
+								
+								<div class="buttons">
+									<button class="button" type="submit">
+										<span class="text">Вход</span>
+									</button>
+								</div>
+							
+							</form>
+						</div>
+					</div>
+				</td>
+			</tr>
+			</tbody>
+		</table>
+	</div>
+	<div class="popup block">
+		<table class="popup-wrap-table">
+			<tbody>
+			<tr>
+				<td>
+					<div class="popup-data">
+						<span class="popup-close"></span>
+						<div class="popup-block">
+							<h3>Продолжить просмотр</h3>
+							
+							
+							<form action="post" class="" id="form_registration">
+								<input type="hidden" name="form_registration" value="1"/>
+								
+								<div class="f-row">
+									<div class="f-label">
+										Номер телефона
+										<span class="f-desc">(используется в качестве логина для входа на сайт)</span>
+									</div>
+									
+									<input class="f-input" type="text" name="phone" value="+380"/>
+								</div>
+								
+								<div class="f-row">
+									<div class="f-label">
+										Ваше имя
+										<span class="f-desc">(отображается в личном кабинете и комментариях)</span>
+									</div>
+									
+									<input class="f-input" type="text" name="name" value=""/>
+								</div>
+								
+								<p class="pass">
+									Пароль будет выслан на указанный номер телефона.
+									<a class="help" href="http://smshelp.org/" target="_blank">Информация для
+										абонентов.</a>
+								</p>
+								
+								
+								<div class="buttons">
+									<button class="button" type="submit">
+										<span class="text">Продолжить</span>
+									</button>
+								</div>
+							
+							</form>
+						</div>
+					</div>
+				</td>
+			</tr>
+			</tbody>
+			<tfoot>
+			<tr>
+				<td>
+					<div class="prices footer">
+						
+						© 2017 klad.hd17.ru. Все права защищены. ООО «наутилус», ОГРН: 1197746426284, 119983, Москва,
+						Кутузовский проспект, д.95.
+						Все материалы, представленные на сайте, предназначены исключительно для ознакомления
+						пользователей с видео-контентом.
+						Любое копирование, распространение, тиражирование и использование в коммерческих целях
+						запрещено. Все права на видеоматериалы
+						в количестве 16934, фото в количестве 983403, тексты в количестве 138472 публикаций, которые
+						находятся на данном
+						сайте, принадлежат их авторам и владельцам авторских прав. Для регистрации необходимо отправить
+						смс на короткий платный
+						номер. Доступ предоставляется на один день с продлением.
+						<br/> Услуга предоставляется только для совершеннолетних абонентов национальных GSM операторов.
+						Для абонентов Киевстар,
+						МТС и Лайфселл предоставляется услуга Подписка. Стоимость услуги для Абонентов АО «Киевстар» - 5
+						грн с НДС 1 раз
+						в день. Стоимость услуги для Абонентов ООО «лайфселл» (lifecell) составляет 5 грн с НДС 1 раз в
+						день. Стоимость услуги
+						для Абонентов ПрАО «МТС Украина» (МТС и Vodafone) составляет 12 грн с НДС 1 раз в день.
+						Дополнительно удерживается
+						сбор в Пенсионный фонд в размере 7,5% от стоимости услуги без учета НДС. Для отказа от
+						предоставления услуги Подписка
+						отправьте смс-сообщение: для Абонентов АО "Киевстар" с текстом СТОП119 на номер 8512 (смс
+						бесплатно); для Абонентов
+						ООО «лайфселл» (lifecell) с текстом СТОП119 на номер 8512 (смс бесплатно); для Абонентов ПрАО
+						«МТС Украина» с текстом
+						СТОП на номер 2855 (смс бесплатно). Для Абонентов Киевстар и Лайфселл услуга оказывается ООО
+						«Гранд Медиа», Информация
+						для абонентов: 0 800 21-8888 (звонок бесплатный), e-mail: ask@smshelp.org.
+					</div>
+				</td>
+			</tr>
+			</tfoot>
+		</table>
+	</div>
+	<script>
+        mAuth.init({
+            user_ok: false,
+            url_logout: '{$url_logout}',   //Здесь должен быть ajax запрос
+            url_popup_open: '{$url_popup_open}',	//Здесь должен быть ajax запрос
+            wap_payment: false,
+            wap_payment_url: '{$wap_payment_url}'	//Здесь должен быть ajax запрос
+        });
+
+        mFilm.setOptions({
+            play_preview: true
+        });
+        mFilm.init();
+	</script>
+</div>
+</body>
+
+</html>
