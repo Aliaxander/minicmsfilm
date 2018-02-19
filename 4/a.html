@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
+	<meta name="MobileOptimized" content="240">
+	<meta name="HandheldFriendly" content="true">
+	
+	<!-- Название фильма, год производства, имя сайта -->
+	
+	<title>{$film_name} ({$description_year}) - {$landing_name}</title>
+	<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700" rel="stylesheet">
+	<link rel="stylesheet" href="css/style.css">
+	<link href="img/favicon.png" rel="shortcut icon" type="image/png">
+	<script src="js/main.js"></script>
+</head>
+
+<body>
+<div id="body">
+	
+	<div id="header">
+		<div class="header">
+			<div class="content">
+				<a id="logo" href="#"></a>
+				<style>
+					
+					/* Логотип сайта */
+					
+					.logo {
+						background: url('{$logo}') no-repeat 50% 50%;
+					}
+				</style>
+				<div id="top-nav">
+					<a href="#">Главная</a>
+					<a href="#">Каталог</a>
+					<a href="#">Новинки</a>
+					<a href="#">Сериалы</a>
+					<a href="#">Мультфильмы</a>
+					
+					<div class="clear"></div>
+				</div>
+				
+				<a class="show-search-form"><span class="icon icon-search "></span></a>
+				
+				<div class="clear"></div>
+			</div>
+		</div>
+		
+		<form id="search" class="hidden" method="GET" action="#">
+			<div class="content">
+				<div class="search-input">
+					<span class="icon icon-search-1 "></span>
+					<input placeholder="Поиск" name="q" value="">
+					<button class="button">Найти</button>
+				</div>
+			</div>
+		</form>
+	</div>
+	
+	<div id="content">
+		<div class="film">
+			
+			<div id="video">
+				
+				<div class="content">
+					
+					<div class="film-name">
+						
+						<!-- Название фильма -->
+						
+						<div class="ru-name">{$film_name}</div>
+						
+						<!-- Оригинальное название фильма -->
+						
+						<div class="original-name">{$original_film_name}</div>
+					</div>
+					
+					
+					<div class="video">
+						
+						<div class="player">
+							<div class="img">
+								
+								<!-- Постер в плеере -->
+								
+								<img src="{$videoplayer_poster}">
+							</div>
+							<a class="play block"></a>
+						</div>
+						
+						<div class="film-stat">
+							
+							<div class="stat-c">
+								<div class="stat">
+									
+									<!-- Качество фильма. Пример "HD-Rip" -->
+									
+									<span>{$quality}</span>
+									<span class="icon icon-quality "></span></div>
+							</div>
+							
+							<div class="stat-c">
+								<div class="stat">
+									
+									<!-- Рейтинг фильма в формате "6.32" -->
+									
+									<span>{$rating}</span>
+									<span class="icon icon-star "></span></div>
+							</div>
+							
+							<div class="stat-c">
+								<div class="stat">
+									
+									<!-- Продолжительность фильма -->
+									
+									<span>{$duration}</span>
+									<span class="icon icon-time "></span></div>
+							</div>
+							
+							
+							<div class="stat-c">
+								<div class="stat">
+									
+									<!-- Кол-во просмотров -->
+									
+									<span>{$views}</span>
+									<span class="icon icon-eye "></span></div>
+							</div>
+						
+						</div>
+					
+					</div>
+					
+					<div class="clear"></div>
+				</div>
+			
+			</div>
+			
+			<div class="info">
+				
+				<div class="content">
+					<div class="description">
+						<h2>Описание</h2>
+						<div>
+							{$description}
+						</div>
+					</div>
+					
+					<div class="film-info">
+						<table>
+							<tr>
+								<th>Год выпуска</th>
+								<td>{$description_year}</td>
+							</tr>
+							
+							<tr>
+								<th>Жанр</th>
+								<td>{$description_genre}</td>
+							</tr>
+							
+							<tr>
+								<th>Страна</th>
+								<td>{$description_country}</td>
+							</tr>
+							
+							<tr>
+								<th>Премьера</th>
+								<td>{$description_premiere_world}</td>
+							</tr>
+							
+							<tr>
+								<th>Режиссер</th>
+								<td>{$description_director}</td>
+							</tr>
+							
+							<tr>
+								<th>В ролях</th>
+								<td>{$description_cast}</td>
+							</tr>
+						</table>
+					</div>
+				
+				</div>
+			
+			</div>
+			
+			<div class="info-border"></div>
+			
+			<div class="clear"></div>
+			
+			<div class="comments ">
+				<div class="content">
+					<h2>Комментарии</h2>
+					
+					<!-- Код одного комментария -->
+					<comments>
+						<div class="comment">
+							<div class="user-name">{$comment_name}</div>
+							<div class="date">{$comment_date}</div>
+							<div class="clear"></div>
+							<div class="text">{$comment_text}</div>
+						</div>
+					</comments>
+					<!-- Конец кода одного комментария -->
+					
+					<form class="write-comment">
+						<h2>Написать комментарий</h2>
+						<textarea></textarea>
+						<div class="buttons">
+							<button type="submit" class="button">Отправить</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<div id="footer">
+		<div class="auth">
+		
+		</div>
+		
+		<div class="columns">
+			<div class="content">
+				<div class="column">
+					<div class="title">Смотрите</div>
+					
+					<a href="#">Фильмы</a>
+					<a href="#">Сериалы</a>
+					<a href="#">Мультфильмы</a>
+				
+				</div>
+				
+				
+				<div class="column">
+					<div class="title">О нас</div>
+					
+					
+					<a href="#">О проекте</a>
+					<a href="#">Размещение рекламы</a>
+					<a href="#">Правообладателям</a>
+					<a href="#">Вакансии</a>
+				</div>
+				
+				<div class="column">
+					<div class="title">Присоединяйтесь</div>
+					
+					<a href="http://facebook.com/">Facebook</a>
+					<a href="http://twitter.com/">Twitter</a>
+					<a href="http://vk.com/">ВКонтакте</a>
+					<a href="http://instagram.com/">Instagram</a>
+				</div>
+				
+				<div class="column">
+					<div class="title">Пользователям</div>
+					
+					
+					<a href="#">Пользовательское соглашение</a>
+					<a href="#">Политика конфиденциальности</a>
+					<a href="#">Часто задаваемые вопросы</a>
+					
+					<a href="#">Обращение к пользователям</a>
+				</div>
+				
+				
+				<div class="clear"></div>
+			</div>
+		</div>
+		
+		<div class="copyright">
+			© 2008–2017 <a href="#">{$landing_name}</a>
+		</div>
+		
+		<div class="ua-footer">
+			<div class="content">
+				Услуга предоставляется только для совершеннолетних абонентов национальных GSM операторов. Для абонентов
+				Киевстар, МТС и Лайфселл
+				предоставляется услуга Подписка. Стоимость услуги для Абонентов АО «Киевстар» - 5 грн с НДС 1 раз в
+				день. Стоимость
+				услуги для Абонентов ООО «лайфселл» (lifecell) составляет 5 грн с НДС 1 раз в день. Стоимость услуги для
+				Абонентов ПрАО
+				«МТС Украина» (МТС и Vodafone) составляет 12 грн с НДС 1 раз в день. Дополнительно удерживается сбор в
+				Пенсионный фонд
+				в размере 7,5% от стоимости услуги без учета НДС. Для отказа от предоставления услуги Подписка отправьте
+				смс-сообщение:
+				для Абонентов АО "Киевстар" с текстом СТОП119 на номер 8512 (смс бесплатно); для Абонентов ООО
+				«лайфселл» (lifecell)
+				с текстом СТОП119 на номер 8512 (смс бесплатно); для Абонентов ПрАО «МТС Украина» с текстом СТОП на
+				номер 2855 (смс
+				бесплатно). Для Абонентов Киевстар и Лайфселл услуга оказывается ООО «Гранд Медиа», Информация для
+				абонентов: 0 800
+				21-8888 (звонок бесплатный), e-mail: ask@smshelp.org.
+			</div>
+		</div>
+	</div>
+
+</div>
+
+<div class="auth">
+	<div class="popup login">
+		<div class="table">
+			<div class="t-body">
+				<div class="popup-data">
+					<span class="popup-close"><span class="icon icon-close "></span></span>
+					<div class="popup-login">
+						<h2>Вход</h2>
+						
+						
+						<form action="#" class="" id="form_login">
+							<input type="hidden" name="form_login" value="1"/>
+							
+							<div class="f-row">
+								<div class="f-label">
+									Номер телефона
+								</div>
+								
+								<input class="f-input" type="text" name="phone" value="+380"/>
+							</div>
+							
+							<div class="f-row">
+								<div class="f-label">
+									Пароль
+								</div>
+								
+								<input class="f-input" type="password" name="password" value=""/>
+							</div>
+							
+							<div class="buttons">
+								<button class="button" type="submit">Вход</button>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+			<div class="t-foot">
+				<div class="prices footer">
+					
+					© 2017 kino.gl. Все права защищены. ООО «наутилус», ОГРН: 1197746426284, 119983, Москва, Кутузовский
+					проспект, д.95. Все
+					материалы, представленные на сайте, предназначены исключительно для ознакомления пользователей с
+					видео-контентом. Любое
+					копирование, распространение, тиражирование и использование в коммерческих целях запрещено. Все
+					права на видеоматериалы
+					в количестве 16934, фото в количестве 983403, тексты в количестве 138472 публикаций, которые
+					находятся на данном сайте,
+					принадлежат их авторам и владельцам авторских прав. Для регистрации необходимо отправить смс на
+					короткий платный номер.
+					Доступ предоставляется на один день с продлением.
+					<br/> Услуга предоставляется только для совершеннолетних абонентов национальных GSM операторов. Для
+					абонентов Киевстар,
+					МТС и Лайфселл предоставляется услуга Подписка. Стоимость услуги для Абонентов АО «Киевстар» - 5 грн
+					с НДС 1 раз в
+					день. Стоимость услуги для Абонентов ООО «лайфселл» (lifecell) составляет 5 грн с НДС 1 раз в день.
+					Стоимость услуги
+					для Абонентов ПрАО «МТС Украина» (МТС и Vodafone) составляет 12 грн с НДС 1 раз в день.
+					Дополнительно удерживается
+					сбор в Пенсионный фонд в размере 7,5% от стоимости услуги без учета НДС. Для отказа от
+					предоставления услуги Подписка
+					отправьте смс-сообщение: для Абонентов АО "Киевстар" с текстом СТОП119 на номер 8512 (смс
+					бесплатно); для Абонентов
+					ООО «лайфселл» (lifecell) с текстом СТОП119 на номер 8512 (смс бесплатно); для Абонентов ПрАО «МТС
+					Украина» с текстом
+					СТОП на номер 2855 (смс бесплатно). Для Абонентов Киевстар и Лайфселл услуга оказывается ООО «Гранд
+					Медиа», Информация
+					для абонентов: 0 800 21-8888 (звонок бесплатный), e-mail: ask@smshelp.org.
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="popup block">
+		<div class="table">
+			<div class="t-body">
+				<div class="popup-data">
+					<span class="popup-close"><span class="icon icon-close "></span></span>
+					<div class="popup-block">
+						<div class="reg">
+							<h2>Продолжить просмотр</h2>
+							
+							
+							<form action="#" class="" id="form_registration">
+								<input type="hidden" name="form_registration" value="1"/>
+								
+								<div class="f-row">
+									<div class="f-label">
+										Номер телефона
+									</div>
+									
+									<input class="f-input" type="text" name="phone" value="+380"/>
+								</div>
+								
+								<div class="f-row">
+									<div class="f-label">
+										Ваше имя
+									</div>
+									
+									<input class="f-input" type="text" name="name" value=""/>
+								</div>
+								
+								<p class="pass">Пароль будет выслан на указанный номер телефона.</p>
+								
+								<div class="prices">
+									Услуга предоставляется только для совершеннолетних абонентов национальных GSM
+									операторов. Для абонентов Киевстар, МТС и Лайфселл
+									предоставляется услуга Подписка. Стоимость услуги для Абонентов АО «Киевстар» - 5
+									грн с НДС 1 раз в день. Стоимость
+									услуги для Абонентов ООО «лайфселл» (lifecell) составляет 5 грн с НДС 1 раз в день.
+									Стоимость услуги для Абонентов
+									ПрАО «МТС Украина» (МТС и Vodafone) составляет 12 грн с НДС 1 раз в день.
+									Дополнительно удерживается сбор в Пенсионный
+									фонд в размере 7,5% от стоимости услуги без учета НДС. Для отказа от предоставления
+									услуги Подписка отправьте смс-сообщение:
+									для Абонентов АО "Киевстар" с текстом СТОП119 на номер 8512 (смс бесплатно); для
+									Абонентов ООО «лайфселл» (lifecell)
+									с текстом СТОП119 на номер 8512 (смс бесплатно); для Абонентов ПрАО «МТС Украина» с
+									текстом СТОП на номер 2855
+									(смс бесплатно). Для Абонентов Киевстар и Лайфселл услуга оказывается ООО «Гранд
+									Медиа», Информация для абонентов:
+									0 800 21-8888 (звонок бесплатный), e-mail: ask@smshelp.org.
+								</div>
+								<div class="buttons">
+									<button class="button" type="submit">Продолжить</button>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="t-foot">
+				<div class="prices footer">
+					
+					© 2017 kino.gl. Все права защищены. ООО «наутилус», ОГРН: 1197746426284, 119983, Москва, Кутузовский
+					проспект, д.95. Все
+					материалы, представленные на сайте, предназначены исключительно для ознакомления пользователей с
+					видео-контентом. Любое
+					копирование, распространение, тиражирование и использование в коммерческих целях запрещено. Все
+					права на видеоматериалы
+					в количестве 16934, фото в количестве 983403, тексты в количестве 138472 публикаций, которые
+					находятся на данном сайте,
+					принадлежат их авторам и владельцам авторских прав. Для регистрации необходимо отправить смс на
+					короткий платный номер.
+					Доступ предоставляется на один день с продлением.
+					<br/> Услуга предоставляется только для совершеннолетних абонентов национальных GSM операторов. Для
+					абонентов Киевстар,
+					МТС и Лайфселл предоставляется услуга Подписка. Стоимость услуги для Абонентов АО «Киевстар» - 5 грн
+					с НДС 1 раз в
+					день. Стоимость услуги для Абонентов ООО «лайфселл» (lifecell) составляет 5 грн с НДС 1 раз в день.
+					Стоимость услуги
+					для Абонентов ПрАО «МТС Украина» (МТС и Vodafone) составляет 12 грн с НДС 1 раз в день.
+					Дополнительно удерживается
+					сбор в Пенсионный фонд в размере 7,5% от стоимости услуги без учета НДС. Для отказа от
+					предоставления услуги Подписка
+					отправьте смс-сообщение: для Абонентов АО "Киевстар" с текстом СТОП119 на номер 8512 (смс
+					бесплатно); для Абонентов
+					ООО «лайфселл» (lifecell) с текстом СТОП119 на номер 8512 (смс бесплатно); для Абонентов ПрАО «МТС
+					Украина» с текстом
+					СТОП на номер 2855 (смс бесплатно). Для Абонентов Киевстар и Лайфселл услуга оказывается ООО «Гранд
+					Медиа», Информация
+					для абонентов: 0 800 21-8888 (звонок бесплатный), e-mail: ask@smshelp.org.
+				</div>
+			</div>
+		</div>
+	</div>
+	<script>
+        mAuth.init({
+            user_ok: false,
+            url_logout: '{$url_logout}',
+            url_popup_open: '{$url_popup_open}',
+            wap_payment: false,
+            wap_payment_url: '{$wap_payment_url}'
+        });
+	</script>
+</div>
+</body>
+
+</html>
