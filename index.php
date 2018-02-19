@@ -9,6 +9,9 @@ $landing_name = 'Name';
 $tpl = 'ac.html';
 $logo = 'logo';
 $contentFile = '1';
+if (!empty($_GET['contentFile'])) {
+    $contentFile = (int)$_GET['contentFile'];
+}
 
 $content = file_get_contents("content/" . $contentFile);
 $contents = explode("\n", $content);
@@ -50,7 +53,7 @@ $comments = implode("\n", $comments);
 
 $fileTmp = preg_replace('|<comments>(.*)</comments>|isU', $comments, $fileTmp);
 //content replace:
-$content = file_get_contents("content/1");
+$content = file_get_contents("content/" . $contentFile);
 $contents = explode("\n", $content);
 foreach ($contents as $replace) {
     $replace = explode('|', $replace);
