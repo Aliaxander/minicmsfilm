@@ -9,6 +9,10 @@ $landing_name = 'Name';
 $tpl = 'ac.html';
 $logo = 'img/index.png';
 $contentFile = '1';
+
+
+
+
 if (!empty($_GET['contentFile'])) {
     $contentFile = (int)$_GET['contentFile'];
 }
