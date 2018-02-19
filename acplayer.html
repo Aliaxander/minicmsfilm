@@ -1,0 +1,51 @@
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0" />
+        <meta name="MobileOptimized" content="240"/>
+        <meta name="HandheldFriendly" content="true"/>
+    
+            <link rel="stylesheet" href="pla.css" />
+    
+        <script type="text/javascript" src="pla.js"></script>
+    </head>
+    <body class="">
+        <div id="widget" class="">
+            <div id="player">
+        <span class="controls-play-pause-big" data-control="play-pause">
+            <span class="title">
+                <span class="film-name"></span>
+                <span class="episode"></span>
+            </span>
+        </span>
+        <div class="controls" data-control="controls-container">
+            <span class="controls-play-pause" data-control="play-pause"></span>
+            <span class="controls-progress-bar" data-control="progress-bar">
+                <span class="controls-progress-bar-value" data-control="progress-bar-value"></span>
+            </span>
+            <span class="controls-time-inverse" data-control="time-inverse"></span>
+            <span class="controls-mute" data-control="mute"></span>
+                <span class="controls-volume" data-control="volume">
+                    <span class="controls-volume-value" data-control="volume-value"></span>
+                </span>
+            <span class="controls-full-screen" data-control="full-screen"></span>
+        </div>
+    </div>			</div>
+        </body>
+    </html>
+    
+    <script>
+        mWidget.init({
+        
+            video: {
+                name: "{$film_name}",
+                duration: "6962",
+                src: "https://ia800504.us.archive.org/32/items/electricsheep-flock-244-32500-2/00244%3D32592%3D22973%3D22551.mp4",   //src видеофайла 
+                format: 'mp4',
+                poster_src: "{$videoplayer_poster}",    //Постер к видеоплееру
+                season: "",
+                episode: ""		},
+            film_id: 162,
+            skip_video: false,
+            hide_name: true,
+            user_ok: false	});
+    </script>
