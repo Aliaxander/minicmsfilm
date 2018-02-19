@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	
+	<!-- Название фильма, год производства, имя сайта -->
+	
+	<title>{$film_name} ({$description_year}) - {$landing_name}</title>
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600" rel="stylesheet">
+	<link rel="stylesheet" href="css/style.css">
+	<link href="img/favicon.png" rel="shortcut icon" type="image/png">
+	<script src="js/main.js"></script>
+</head>
+
+<body>
+<div id="pad-top">
+</div>
+
+<div id="header">
+	<div class="content">
+		<div class="top-nav">
+			<a class="logo" href="#"></a>
+			<style>
+				/* Логотип сайта */
+				
+				.logo {
+					background: url('img/{$logo}') no-repeat 50% 50%;
+				}
+			</style>
+			
+			<a href="#">Главная</a>
+			<a href="#">Каталог</a>
+			<a href="#">Новинки</a>
+			<a href="#">Сериалы</a>
+			<a href="#">Мультфильмы</a>
+			
+			<span class="auth">
+				</span>
+			<div class="clear"></div>
+		</div>
+		
+		<form id="search" method="GET" action="#">
+			<span class="icon icon-search "></span> <input placeholder="Поиск фильмов" name="q" value="">
+		</form>
+		
+		<div class="breadcrumbs">
+			<a href="#">Главная</a>
+			<span class="arrow">&gt;</span>
+			<a href="#">Каталог</a>
+			<span class="arrow">&gt;</span>
+			
+			<!-- Название фильма, год производства -->
+			
+			<span>{$film_name} ({$description_year})</span>
+		</div>
+	</div>
+</div>
+<div id="content">
+	<div class="content">
+		<style>
+			body {
+				background: #000000;
+				/* Картинка фона к фильму */
+				background-image: url('{$film_bg}') !important;
+				background-position: 50% 0 !important;
+				background-repeat: no-repeat !important;
+				background-size: cover;
+			}
+			
+			#pad-top {
+				height: 370px !important;
+			}
+		</style>
+		<div class="film">
+			
+			
+			<div class="video">
+				<div class="player">
+					<div id="player">
+						<span class="controls-play-pause-big" data-control="play-pause"></span>
+						<div class="controls" data-control="controls-container">
+							<span class="controls-play-pause" data-control="play-pause"></span>
+							<span class="controls-progress-bar" data-control="progress-bar">
+					<span class="controls-progress-bar-value" data-control="progress-bar-value"></span>
+								</span>
+							<span class="controls-time-inverse" data-control="time-inverse"></span>
+							<span class="controls-mute" data-control="mute"></span>
+							<span class="controls-volume" data-control="volume">
+					<span class="controls-volume-value" data-control="volume-value"></span>
+								</span>
+							<span class="controls-full-screen" data-control="full-screen"></span>
+						</div>
+					</div>
+					
+					<script>
+                        mFilm.setOptions({
+                            swfPath: '',
+                            video: {
+                                duration: 6117,
+                                src: {
+
+                                    // Начало фильма
+
+                                    'user_not_ok': '{$main_video}',
+
+                                    // Трейлер к видео
+
+                                    'user_ok': '{$videoplayer_trailer}'
+                                },
+                                format: 'mp4',
+
+                                // Постер в плеере
+
+                                poster_src: '{$videoplayer_poster}'
+                            }
+                        });
+                        mFilm.init();
+					</script>
+				</div>
+				
+				<div class="info">
+					
+					<div class="film-name">
+						
+						<!-- Название фильма -->
+						
+						<span class="name">{$film_name}</span>
+						
+						<!-- Оригинальное название фильма -->
+						
+						<span class="original">{$original_film_name}</span>
+					</div>
+					
+					<div class="rating">
+						<span class="label">Рейтинг фильма:</span>
+						
+						<!-- Рейтинг фильма в формате "6.32" -->
+						
+						<span class="value">{$rating}</span>
+					</div>
+					
+					<div class="stat">
+						<div class="row">
+							<span class="label">Качество:</span>
+							
+							<!-- Качество фильма. Пример "HD-Rip" -->
+							
+							<span class="value">{$quality}</span>
+						</div>
+						<div class="row">
+							<span class="label">Продолжительность:</span>
+							<span class="value">{$duration}</span>
+						</div>
+						
+						<div class="row">
+							<span class="label">Просмотров:</span>
+							<span class="value">{$views}</span>
+						</div>
+						
+						<div class="row">
+							<span class="label">Проголосовало:</span>
+							<span class="value">{$vote}</span>
+						</div>
+						
+						<div class="like row" data-url="">
+							<span class="label">Оцени фильм</span>
+							<span class="value"><span class="icon icon-like "></span> <span
+									class="icon icon-dislike "></span></span>
+						</div>
+					</div>
+				
+				</div>
+				
+				<div class="clear"></div>
+			</div>
+			
+			<div class="film-info pad-20">
+				
+				<div class="info">
+					
+					<!-- Код описания -->
+					
+					<div class="description">
+						<h3>Описание</h3>
+						<p>{$description}</p>
+					</div>
+					
+					<!-- Конец кода описания -->
+					
+					<!-- Код одного кадра -->
+					
+					<div class="stills">
+						<h3>Кадры</h3>
+						<script>
+                            mStills.init($('.stills'), {
+                                "0": {
+                                    "url_preview": "{$still_preview}",
+                                    "url_preview_big": "{$still_preview_big}",
+                                    "url_popup": "{$still_popup}"
+                                },
+                                "1": {
+                                    "url_preview": "{$still_preview}",
+                                    "url_preview_big": "{$still_preview_big}",
+                                    "url_popup": "{$still_popup}"
+                                }
+                            }, 8);
+						</script>
+					
+					</div>
+					
+					<!-- Конец кода одного кадра -->
+					
+					<table>
+						<tr>
+							<th>Год выпуска</th>
+							<td>{$description_year}</td>
+						</tr>
+						
+						<tr>
+							<th>Жанр</th>
+							<td>{$description_genre}</td>
+						</tr>
+						
+						<tr>
+							<th>Страна</th>
+							<td>{$description_country}</td>
+						</tr>
+						
+						<tr>
+							<th>Продолжительность</th>
+							<td>{$duration}</td>
+						</tr>
+						
+						<tr>
+							<th>Бюджет</th>
+							<td>{$description_budget}</td>
+						
+						</tr>
+						
+						<tr>
+							<th>Премьера (мир)</th>
+							<td>{$description_premiere_world}</td>
+						</tr>
+						
+						<tr>
+							<th>Премьера (РФ)</th>
+							<td>{$description_premiere_rf}</td>
+						</tr>
+						
+						<tr>
+							<th>Режиссер</th>
+							<td>{$description_director}</td>
+						</tr>
+						
+						<tr>
+							<th>В ролях</th>
+							<td>{$description_cast}</td>
+						</tr>
+						
+						<tr>
+							<th>Автор сценария</th>
+							<td>{$description_writer}</td>
+						</tr>
+						
+						<tr>
+							<th>Продюсер</th>
+							<td>{$description_producer}</td>
+						</tr>
+						
+						<tr>
+							<th>Оператор</th>
+							<td>{$description_operator}</td>
+						</tr>
+						
+						<tr>
+							<th>Композитор</th>
+							<td>{$description_composer}</td>
+						</tr>
+						
+						<tr>
+							<th>Художник</th>
+							<td>{$description_artist}</td>
+						</tr>
+						
+						<tr>
+							<th>Монтаж</th>
+							<td>{$description_editing}</td>
+						</tr>
+					</table>
+				</div>
+				
+				<div class="more-films">
+					<h3>Смотрите также</h3>
+					<div class="films">
+						
+						<!-- Ссылка на другой фильм -->
+						
+						<a href="{$film_src}">
+							<img src="{$film_poster}"/>
+							<span class="name">{$film_name}</span>
+							<span class="original-name">{$original_film_name}</span>
+							<div class="clear"></div>
+						</a>
+						<div class="clear"></div>
+					</div>
+				</div>
+				<div class="clear"></div>
+			</div>
+			
+			<div class="comments pad-20-lr pad-20-b">
+				<h2>Комментарии</h2>
+				
+				<!-- Код одного комментария -->
+				<comments>
+					<div class="comment">
+						<div class="user-name">{$comment_name}</div>
+						<div class="date">{$comment_date}</div>
+						<div class="clear"></div>
+						<div class="text">{$comment_text}</div>
+					</div>
+				</comments>
+				<!-- Конец кода одного комментария -->
+				
+				<form class="write-comment pad-20-t">
+					<h2>Написать комментарий</h2>
+					<textarea></textarea>
+					<div class="buttons">
+						<button type="submit" class="button">Отправить</button>
+					</div>
+				</form>
+			</div>
+		</div>
+		
+		<script>
+            $(function () {
+                var info = $('.film .info ');
+                var film_name = $('.film-name', info);
+                var rating = $('.rating ', info);
+                var rows = $('.stat .row', info);
+
+                var intv = setInterval(function () {
+                    var lh = info.height();
+
+                    if (film_name.length)
+                        lh = lh - parseInt(film_name.height()) - 25;
+
+                    if (rating.length)
+                        lh = lh - parseInt(rating.height()) - 25;
+
+                    lh = lh - 24;
+                    lh = parseInt(lh / rows.length);
+
+                    rows.css('line-height', lh + 'px');
+                    rows.css('height', lh + 'px');
+                }, 10);
+
+                setTimeout(function () {
+                    clearInterval(intv);
+                }, 2000);
+            });
+		</script>
+	</div>
+</div>
+<div id="footer">
+	<div class="content">
+		<div class="content">
+			
+			<div class="column categories">
+				<div class="title">Смотрите</div>
+				
+				<a href="#">Фильмы</a>
+				<a href="#">Сериалы</a>
+				<a href="#">Мультфильмы</a>
+			
+			</div>
+			
+			
+			<div class="column about">
+				<div class="title">О нас</div>
+				
+				
+				<a href="#">О проекте</a>
+				<a href="#">Размещение рекламы</a>
+				<a href="#">Правообладателям</a>
+				<a href="#">Вакансии</a>
+			</div>
+			
+			<div class="column user-p">
+				<div class="title">Пользователям</div>
+				
+				
+				<a href="#">Пользовательское соглашение</a>
+				<a href="#">Политика конфиденциальности</a>
+				<a href="#">Часто задаваемые вопросы</a>
+				
+				<a href="#">Обращение к пользователям</a>
+			</div>
+			
+			<div class="column join">
+				<div class="title">Присоединяйтесь</div>
+				
+				<a href="http://facebook.com/">Facebook</a>
+				<a href="http://twitter.com/">Twitter</a>
+				<a href="http://vk.com/">ВКонтакте</a>
+				<a href="http://instagram.com/">Instagram</a>
+			</div>
+			
+			<div class="clear"></div>
+			
+			<div class="copyright">
+				© 2008–2017 <a href="#">{$landing_name}</a>
+			</div>
+			
+			<div class="ua-footer">
+				Услуга предоставляется только для совершеннолетних абонентов всех национальных GSM операторов. Для
+				оказания услуги используется
+				короткий номер 5916. Стоимость одного SMS составляет 25 гривен (включая НДС). Дополнительно взимается
+				сбор в Пенсионный
+				фонд в размере 7,5 % от стоимости услуги без учета НДС. Организатор и техническая поддержка: ООО «ВЕС
+				Медиа»; 02091,
+				г. Киев, Харьковское шоссе, 144В; телефон 0800501175, Пн-Пт 10:00 до 19:00. Доступ предоставляется
+				бессрочно и срок
+				действия услуги не ограничен.
+			</div>
+		
+		</div>
+	</div>
+</div>
+
+<div class="auth">
+	<table class="popup login">
+		<tr>
+			<td>
+				<div class="popup-data">
+					<span class="popup-close"><span class="icon icon-close-popup "></span></span>
+					<div class="popup-login">
+						<h2>Вход</h2>
+						
+						
+						<form action="" class="" id="form_login">
+							<input type="hidden" name="form_login" value="1"/>
+							
+							<div class="f-row">
+								<div class="f-label">
+									Номер телефона
+								</div>
+								
+								<input class="f-input" type="text" name="phone" value="+380"/>
+							</div>
+							
+							<div class="f-row">
+								<div class="f-label">
+									Пароль
+								</div>
+								
+								<input class="f-input" type="password" name="password" value=""/>
+							</div>
+							
+							<div class="buttons">
+								<button class="button" type="submit">Вход</button>
+							</div>
+						</form>
+					</div>
+				</div>
+			</td>
+		</tr>
+	</table>
+	<table class="popup block">
+		<tr>
+			<td>
+				<div class="popup-data">
+					<span class="popup-close"><span class="icon icon-close-popup"></span></span>
+					<div class="popup-block">
+						<table>
+							<tr>
+								<td class="reg">
+									<h2>Продолжить просмотр</h2>
+									
+									
+									<form action="" class="" id="form_registration">
+										<input type="hidden" name="form_registration" value="1">
+										
+										<div class="f-row">
+											<div class="f-label">
+												Номер телефона <span class="f-desc">(используется в качестве логина для входа на сайт)</span>
+											</div>
+											
+											<input class="f-input" type="text" name="phone" value="+380">
+										</div>
+										
+										<div class="f-row">
+											<div class="f-label">
+												Ваше имя <span class="f-desc">(отображается в личном кабинете и комментариях)</span>
+											</div>
+											
+											<input class="f-input" type="text" name="name" value="">
+										</div>
+										
+										<p class="pass">Пароль будет выслан на указанный номер телефона.</p>
+										
+										<div class="prices">
+											Услуга предоставляется только для совершеннолетних абонентов национальных
+											GSM операторов. Для абонентов Киевстар, МТС и Лайфселл
+											предоставляется услуга Подписка. Стоимость услуги для Абонентов АО
+											«Киевстар» - 5 грн с НДС 1 раз в день. Стоимость
+											услуги для Абонентов ООО «лайфселл» (lifecell) составляет 5 грн с НДС 1 раз
+											в день. Стоимость услуги для Абонентов
+											ПрАО «МТС Украина» (МТС и Vodafone) составляет 12 грн с НДС 1 раз в день.
+											Дополнительно удерживается сбор в Пенсионный
+											фонд в размере 7,5% от стоимости услуги без учета НДС. Для отказа от
+											предоставления услуги Подписка отправьте
+											смс-сообщение: для Абонентов АО "Киевстар" с текстом СТОП119 на номер 8512
+											(смс бесплатно); для Абонентов ООО
+											«лайфселл» (lifecell) с текстом СТОП119 на номер 8512 (смс бесплатно); для
+											Абонентов ПрАО «МТС Украина» с текстом
+											СТОП на номер 2855 (смс бесплатно). Для Абонентов Киевстар и Лайфселл услуга
+											оказывается ООО «Гранд Медиа», Информация
+											для абонентов: 0 800 21-8888 (звонок бесплатный), e-mail: ask@smshelp.org.
+										</div>
+										<div class="prices footer">
+											
+											© 2017 kino.gl. Все права защищены. ООО «наутилус», ОГРН: 1197746426284,
+											119983, Москва, Кутузовский проспект, д.95. Все
+											материалы, представленные на сайте, предназначены исключительно для
+											ознакомления пользователей с видео-контентом.
+											Любое копирование, распространение, тиражирование и использование в
+											коммерческих целях запрещено. Все права на
+											видеоматериалы в количестве 16934, фото в количестве 983403, тексты в
+											количестве 138472 публикаций, которые находятся
+											на данном сайте, принадлежат их авторам и владельцам авторских прав. Для
+											регистрации необходимо отправить смс
+											на короткий платный номер. Доступ предоставляется на один день с продлением.
+											<br/> Услуга предоставляется только для совершеннолетних абонентов
+											национальных GSM операторов. Для абонентов
+											Киевстар, МТС и Лайфселл предоставляется услуга Подписка. Стоимость услуги
+											для Абонентов АО «Киевстар» - 5 грн
+											с НДС 1 раз в день. Стоимость услуги для Абонентов ООО «лайфселл» (lifecell)
+											составляет 5 грн с НДС 1 раз в день.
+											Стоимость услуги для Абонентов ПрАО «МТС Украина» (МТС и Vodafone)
+											составляет 12 грн с НДС 1 раз в день. Дополнительно
+											удерживается сбор в Пенсионный фонд в размере 7,5% от стоимости услуги без
+											учета НДС. Для отказа от предоставления
+											услуги Подписка отправьте смс-сообщение: для Абонентов АО "Киевстар" с
+											текстом СТОП119 на номер 8512 (смс бесплатно);
+											для Абонентов ООО «лайфселл» (lifecell) с текстом СТОП119 на номер 8512 (смс
+											бесплатно); для Абонентов ПрАО «МТС
+											Украина» с текстом СТОП на номер 2855 (смс бесплатно). Для Абонентов
+											Киевстар и Лайфселл услуга оказывается ООО
+											«Гранд Медиа», Информация для абонентов: 0 800 21-8888 (звонок бесплатный),
+											e-mail: ask@smshelp.org.
+										</div>
+										<div class="buttons">
+											<button class="button" type="submit">Продолжить</button>
+										</div>
+									</form>
+								</td>
+							</tr>
+						</table>
+					</div>
+				</div>
+			</td>
+		</tr>
+	</table>
+	
+	<script>
+        mAuth.init({
+            user_ok: false,
+            url_logout: '{$url_logout}',
+            url_popup_open: '{$url_popup_open}',
+            wap_payment: false,
+            wap_payment_url: '{$wap_payment_url}'
+        });
+
+        mFilm.setOptions({play_preview: false});
+        mFilm.init();
+	</script>
+</div>
+</body>
+
+</html>
